@@ -1,22 +1,166 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Пример SVG в HTML</title>
+<title>Пример SVG в HTML</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.tree {
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 20px 0;
+}
+
+.tree ul {
+  position: relative;
+  padding: 20px 0;
+  transition: all 0.5s;
+}
+
+.tree li {
+  list-style-type: none;
+  float: left;
+  position: relative;
+  padding: 20px 5px 0 5px;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.tree li::before,
+.tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: 20px;
+  border-top: 1px solid #ccc;
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+
+.tree li:only-child {
+  padding-top: 0;
+}
+
+.tree li:first-child::before,
+.tree li:last-child::after {
+  border: 0 none;
+}
+
+.tree li:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 2px 0 0;
+}
+
+.tree li:first-child::after {
+  border-radius: 2px 0 0 0;
+}
+
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 20px;
+  border-left: 1px solid #ccc;
+}
+
+.tree li a {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  text-decoration: none;
+  color: #555;
+  font-size: 16px;
+  transition: all 0.5s;
+}
+
+.tree li a:hover,
+.tree li a:hover+ul li a {
+  border: 1px solid cornflowerblue;
+  background: lightskyblue;
+  color: #000;
+}
+
+.tree li a:hover+ul li::after,
+.tree li a:hover+ul li::before,
+.tree li a:hover+ul::before,
+.tree li a:hover+ul ul::before {
+  border-color: #999;
+}
+
+img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  opacity: 0.4;
+}
+
+.tree li a:hover img,
+.tree li a:hover+ul img {
+  opacity: 0.8;
+}
+</style>
 </head>
+
 <body>
-  <svg width="2000" height="1000">
-
-<path d="M350,160 L350,180" stroke="black" stroke-width="2" fill="none"/>
-<path d="M600,160 L600,180" stroke="black" stroke-width="2" fill="none"/>
-<path d="M500,140 L500,160" stroke="black" stroke-width="2" fill="none"/>
-
-<path d="M350,160 L600,160" stroke="black" stroke-width="2" fill="none"/>
-
-<rect x="360" y="50" width="250" height="100" fill="#edf7fd" rx="5" stroke-width="1" stroke="#000" />
-<rect x="230" y="170" width="250" height="100" fill="#edf7fd" rx="5" stroke-width="1" stroke="#000" />
-<rect x="490" y="170" width="250" height="100" fill="#edf7fd" rx="5" stroke-width="1" stroke="#000" />
-
-<rect x="880" y="50" width="250" height="100" fill="#e9daf1" rx="5" stroke-width="1" stroke="#000" />
-  </svg>
+<div class="tree">
+  <ul>
+    <li>
+      <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Отец</a>
+      <ul>
+        <li>
+          <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Сын</a>
+          <ul>
+            <li>
+              <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Внук</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Дочь</a>
+          <ul>
+            <li>
+              <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Внучка</a>
+            </li>
+            <li>
+              <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Внук</a>
+              <ul>
+                <li>
+                  <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Правнучка</a>
+                </li>
+                <li>
+                  <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Правнук</a>
+                </li>
+                <li>
+                  <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Правнучка</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><img src="https://ss.metronews.ru/userfiles/materials/74/741810/858x540.jpg">Внучка</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
 </body>
 </html>
